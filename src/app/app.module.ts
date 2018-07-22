@@ -1,26 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { JokesComponent } from './jokes/jokes.component';
-import { PictureComponent } from './picture/picture.component';
-import { GifComponent } from './picture/gif/gif.component';
-import { JpgComponent } from './picture/jpg/jpg.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    JokesComponent,
-    PictureComponent,
-    GifComponent,
-    JpgComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
